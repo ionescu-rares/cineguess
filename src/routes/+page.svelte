@@ -26,7 +26,7 @@
 
   :global(body) {
     margin: 0;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
