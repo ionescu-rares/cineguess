@@ -195,7 +195,7 @@
     height: 100%;
     width: 100%;
     background-size: cover;
-    background-image: url("orangebg2.jpg");
+    background-image: url("./orangebg2.jpg");
   }
   .progress-bar {
     width: 100%;
