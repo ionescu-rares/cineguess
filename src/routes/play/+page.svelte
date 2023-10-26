@@ -2,6 +2,7 @@
   import Button from "@smui/button";
   import Card from "./Card.svelte";
   import { movies } from "./movies";
+  import { fade } from "svelte/transition";
 
   let score = 0;
   let showCardRatings = [true, false];
@@ -135,7 +136,9 @@
       <h4>Score: {score}</h4>
 
       {#if showTryAgainButton}
-        <Button on:click={handleTryAgain} variant="raised">Try again</Button>
+        <div in:fade={{ duration: 500 }}>
+          <Button on:click={handleTryAgain} variant="raised">Try again</Button>
+        </div>
       {:else}
         <div class="progress-bar">
           <div class="progress" bind:this={progressBar} />
@@ -203,7 +206,7 @@
   }
   .progress-bar {
     width: 100%;
-
+    margin: 8px 0;
     height: 20px;
 
     background-color: rgba(224, 224, 224, 0.7);
@@ -216,7 +219,6 @@
   .progress {
     height: 100%;
     width: 0;
-
     background-color: orange;
   }
 
@@ -233,6 +235,11 @@
     }
     .progress-bar {
       max-width: 200px;
+    }
+  }
+  @media screen and (max-width: 475px) {
+    .progress-bar {
+      max-width: 100px;
     }
   }
 </style>
