@@ -132,18 +132,18 @@
       />
     {/if}
     <div class="ScoreData">
-      <h1>High score: {highScore}</h1>
+      <h4>Score: {score}</h4>
 
-      <div class="progress-bar">
-        <div class="progress" bind:this={progressBar} />
-      </div>
-      <div class="try-again-container">
-        {#if showTryAgainButton}
-          <Button on:click={handleTryAgain} variant="raised">Try again</Button>
-        {/if}
-      </div>
-      <h2>Score: {score}</h2>
+      {#if showTryAgainButton}
+        <Button on:click={handleTryAgain} variant="raised">Try again</Button>
+      {:else}
+        <div class="progress-bar">
+          <div class="progress" bind:this={progressBar} />
+        </div>
+      {/if}
+      <h4>High score: {highScore}</h4>
     </div>
+
     {#if currentMovies[1]}
       <Card
         movieIndex={1}
@@ -170,12 +170,16 @@
     margin-block-end: 0;
   }
   .ScoreData {
+    padding: 8px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    width: 80%;
+    background-color: var(--card-background);
     text-align: center;
     align-items: center;
-    h2 {
+    h4 {
       margin-block-start: 0;
       margin-block-end: 0;
     }
@@ -199,10 +203,10 @@
   }
   .progress-bar {
     width: 100%;
-    min-width: 80px;
+
     height: 20px;
 
-    background-color: rgba(224, 224, 224, 0.2);
+    background-color: rgba(224, 224, 224, 0.7);
     border-radius: 10px;
     overflow: hidden;
   }
@@ -225,7 +229,7 @@
     .ScoreData {
       flex-direction: row;
       width: 100%;
-      justify-content: space-between;
+      justify-content: center;
     }
     .progress-bar {
       max-width: 200px;

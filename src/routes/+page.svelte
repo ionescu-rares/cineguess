@@ -17,6 +17,7 @@
     --dark-surface: #424242;
     --text-color: #ffffff;
     --dark-orange: #e63500;
+    --card-background: rgba(60, 60, 60, 0.9);
     background-color: var(--background);
     color: var(--text-color);
 

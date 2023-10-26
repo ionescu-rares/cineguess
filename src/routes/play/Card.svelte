@@ -251,7 +251,7 @@
   @media screen and (max-width: 675px) {
     .Card {
       width: 400px;
-      grid-template-rows: 1fr 0.5fr 1fr;
+      grid-template-rows: 1fr 1fr;
     }
   }
   @media screen and (max-width: 475px) {
