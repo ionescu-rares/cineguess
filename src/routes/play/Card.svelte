@@ -22,7 +22,7 @@
   async function fetchMovieDetails(title: string) {
     const apiKey = "ee32e460";
     const response = await fetch(
-      `http://www.omdbapi.com/?t=${title}&apikey=${apiKey}`
+      `https://www.omdbapi.com/?t=${title}&apikey=${apiKey}`
     );
     movieDetails = await response.json();
     dispatch("imdbScore", parseFloat(movieDetails.Ratings[0].Value));
@@ -130,7 +130,7 @@
     border-radius: 10px;
     max-width: 700px;
     height: 500px;
-    background-color: rgba(60, 60, 60, 0.5);
+    background-color: rgba(60, 60, 60, 0.9);
 
     .Poster {
       width: 100%;
@@ -149,7 +149,8 @@
       grid-area: description;
       text-align: center;
       align-items: center;
-      overflow-y: auto;
+      overflow: hidden;
+      padding: 0 16px;
     }
 
     .HLButtons {

@@ -231,7 +231,4 @@
       max-width: 200px;
     }
   }
-
-  @media screen and (max-width: 475px) {
-  }
 </style>
