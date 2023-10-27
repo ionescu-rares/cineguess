@@ -35,5 +35,5 @@ export const movies = [
   "Men in Black",
   "The hunger games",
   "Avatar",
-  "Inglorious Basterds",
+  "The lion king",
 ];
