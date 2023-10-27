@@ -130,7 +130,7 @@
     border-radius: 10px;
     max-width: 700px;
     height: 500px;
-    background-color: rgba(60, 60, 60, 0.9);
+    background-color: rgba(60, 60, 60, 0.8);
 
     .Poster {
       width: 100%;
