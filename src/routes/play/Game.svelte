@@ -3,6 +3,7 @@
   import Card from "./Card.svelte";
 
   import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
 
   let score = 0;
   let showCardRatings = [true, false];
@@ -13,6 +14,10 @@
   let progressBar: HTMLDivElement | null = null;
   let showProgressBar = false;
   let highScore = 0;
+  export let mode = "";
+  onMount(() => {
+    highScore = Number(localStorage.getItem(mode)) ?? 0;
+  });
 
   export let slicedContent = [""];
   let initialContent = [...slicedContent];
@@ -49,6 +54,7 @@
     score += 100;
     if (highScore < score) {
       highScore = score;
+      localStorage.setItem(mode, String(highScore));
     }
     borderColor[movieIndex] = "green";
     showProgressBar = true;

@@ -6,5 +6,5 @@
 </script>
 
 <div class="Page">
-  <Game slicedContent={slicedMovies} />
+  <Game slicedContent={slicedMovies} mode="movies" />
 </div>
