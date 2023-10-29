@@ -182,8 +182,8 @@
     grid-template-columns: 1fr 0.5fr 1fr;
     grid-template-rows: 1fr;
     padding: 0 5vw;
-    gap: 1vw;
     place-items: center;
+    height: 100dvh;
   }
 
   .progress-bar {
@@ -208,7 +208,6 @@
     .Cards {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 0.1fr 1fr;
-      height: 100%;
     }
     .ScoreData {
       flex-direction: row;
