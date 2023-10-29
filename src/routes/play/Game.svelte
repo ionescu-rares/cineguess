@@ -181,6 +181,7 @@
     display: grid;
     grid-template-columns: 1fr 0.5fr 1fr;
     grid-template-rows: 1fr;
+    gap: 1vw;
     padding: 0 5vw;
     place-items: center;
     height: 100dvh;
