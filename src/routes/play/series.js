@@ -26,4 +26,10 @@ export const series = [
   "The big bang theory",
   "how i met your mother",
   "seinfeld",
+  "black mirror",
+  "the crown",
+  "the blacklist",
+  "orange is the new black",
+  "you",
+  "the wire",
 ];
