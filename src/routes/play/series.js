@@ -32,4 +32,5 @@ export const series = [
   "orange is the new black",
   "you",
   "the wire",
+  "money heist",
 ];
