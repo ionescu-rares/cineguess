@@ -174,6 +174,7 @@
     h4 {
       margin-block-start: 0;
       margin-block-end: 0;
+      font-size: clamp(0.625rem, 0.5385rem + 0.3846vw, 1rem);
     }
   }
   .Cards {
