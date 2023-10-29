@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { createEventDispatcher, onMount, tick } from "svelte";
-  import { fade, slide } from "svelte/transition";
+  import { createEventDispatcher } from "svelte";
+  import { fade } from "svelte/transition";
   import Button, { Label, Icon } from "@smui/button";
 
   enum SOURCES {
@@ -102,7 +102,7 @@
           <div class={getSourceClass(rating.Source)}>
             <img
               class="RatingImage"
-              src={`${getSourceClass(rating.Source)}.png`}
+              src={`/${getSourceClass(rating.Source)}.png`}
               alt="source"
             />
             <h4>{rating.Value}</h4>
@@ -117,9 +117,13 @@
   h2 {
     font-size: clamp(1rem, 0.8846rem + 0.5128vw, 1.5rem);
   }
+  h3 {
+    font-size: clamp(0.75rem, 0.6531rem + 0.4308vw, 1.17rem);
+  }
   h4 {
     font-size: clamp(0.625rem, 0.5385rem + 0.3846vw, 1rem);
   }
+
   .Card {
     overflow: hidden;
 

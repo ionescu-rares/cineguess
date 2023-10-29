@@ -4,38 +4,15 @@
 
 <div class="menu">
   <img src="cinelogo.png" width={300} alt="logo" />
-  <a href="/play"> <Button variant="raised">Play</Button></a>
+  <h4>Choose mode</h4>
+  <div class="options">
+    <a href="/play/movies"> <Button variant="raised">movies</Button></a>
+    <a href="/play/series"><Button variant="raised">TV series</Button></a>
+  </div>
 </div>
 
 <style lang="scss">
   @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-  :global(:root) {
-    --background: #121212;
-    --orange: #ff3e00;
-    --surface: #757575;
-    --dark-surface: #424242;
-    --text-color: #ffffff;
-    --dark-orange: #e63500;
-    --card-background: rgba(60, 60, 60, 0.9);
-    background-color: var(--background);
-    color: var(--text-color);
-
-    --mdc-theme-primary: var(--orange);
-    --mdc-theme-on-primary: var(--text-color);
-  }
-
-  :global(body) {
-    margin: 0;
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Poppins", serif;
-  }
-  :global(.mdc-button.MainButton) {
-    transition: background-color 0.3s;
-  }
 
   .menu {
     display: flex;
@@ -45,5 +22,11 @@
     background-color: var(--surface);
     border-radius: 10px;
     padding-bottom: 24px;
+    gap: 16px;
+  }
+  .options {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
   }
 </style>
