@@ -6,8 +6,12 @@
   <img src="cinelogo.png" width={300} alt="logo" />
   <h4>Choose mode</h4>
   <div class="options">
-    <a href="/play/movies"> <Button variant="raised">movies</Button></a>
-    <a href="/play/series"><Button variant="raised">TV series</Button></a>
+    <div class="menuButtonWrapper">
+      <a href="/play/movies"> <Button variant="raised">movies</Button></a>
+    </div>
+    <div class="menuButtonWrapper">
+      <a href="/play/series"><Button variant="raised">TV series</Button></a>
+    </div>
   </div>
 </div>
 
@@ -22,11 +26,15 @@
     background-color: var(--surface);
     border-radius: 10px;
     padding-bottom: 24px;
-    gap: 16px;
   }
   .options {
     display: flex;
-    justify-content: space-around;
+    gap: 24px;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+  }
+  .menuButtonWrapper :global(.mdc-button) {
+    width: 200px;
   }
 </style>

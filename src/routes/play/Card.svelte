@@ -79,19 +79,11 @@
 
     {#if showRatings === false}
       <div class="HLButtons">
-        <Button
-          on:click={handleHigherClick}
-          variant="unelevated"
-          class="IconButton"
-        >
+        <Button on:click={handleHigherClick} variant="unelevated">
           <Icon class="material-icons">arrow_upward</Icon>
           <Label>Higher</Label>
         </Button>
-        <Button
-          on:click={handleLowerClick}
-          variant="unelevated"
-          class="IconButton"
-        >
+        <Button on:click={handleLowerClick} variant="unelevated">
           <Icon class="material-icons">arrow_downward</Icon>
           <Label>Lower</Label>
         </Button>
