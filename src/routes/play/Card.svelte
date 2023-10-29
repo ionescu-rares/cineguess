@@ -143,6 +143,7 @@
     }
     .Description {
       grid-area: description;
+      display: flex;
       text-align: center;
       align-items: center;
       overflow: hidden;
@@ -150,12 +151,14 @@
     }
 
     .HLButtons {
+      grid-area: ratings;
       display: flex;
       flex-direction: column;
       gap: 50px;
       width: 80%;
       place-self: center;
       justify-content: center;
+      padding: 24px;
     }
     .Ratings {
       grid-area: ratings;
@@ -239,15 +242,20 @@
     .Card {
       height: 340px;
       width: 600px;
-    }
-    .Description {
-      display: none;
+      .Description {
+        display: none;
+        visibility: hidden;
+      }
     }
   }
   @media screen and (max-width: 675px) {
     .Card {
       width: 400px;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: 1fr 0.5fr 1fr;
+      grid-template-areas: "poster title" "poster description" "poster ratings";
+      .HLButtons {
+        padding: 16px;
+      }
     }
   }
   @media screen and (max-width: 475px) {
@@ -260,6 +268,7 @@
         height: 100%;
         object-fit: cover;
       }
+
       .Ratings {
         .imdb,
         .rotten,
