@@ -6,7 +6,7 @@ export const series = [
   "rick and morty",
   "westworld",
   "haunting of hill house",
-  "Sherlock",
+
   "Better Call Saul",
   "True detective",
   "Narcos",
