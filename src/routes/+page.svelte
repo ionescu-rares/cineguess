@@ -1,9 +1,10 @@
 <script>
+  import { fade } from "svelte/transition";
   import Button from "@smui/button";
 </script>
 
-<div class="menu">
-  <img src="cinelogo.png" width={300} alt="logo" />
+<div class="menu" in:fade={{ duration: 500 }}>
+  <img src="cinelogo.png" width={300} height={300} alt="logo" />
   <h4>Choose mode</h4>
   <div class="options">
     <div class="menuButtonWrapper">
