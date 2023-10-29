@@ -262,7 +262,9 @@
     .Card {
       width: 300px;
       height: 300px;
-
+      .HLButtons {
+        gap: 24px;
+      }
       .Poster {
         width: 150px;
         height: 100%;
