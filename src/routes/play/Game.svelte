@@ -4,6 +4,8 @@
 
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
+  import SoundOn from "./SoundOn.svelte";
+  import SoundOff from "./SoundOff.svelte";
 
   let score = 0;
   let showCardRatings = [true, false];
@@ -13,10 +15,15 @@
   let currentMovieIndex = 1;
   let progressBar: HTMLDivElement | null = null;
   let showProgressBar = false;
+  let hasAudio = true;
   let highScore = 0;
+  let correctSound: HTMLAudioElement | null = null;
+  let wrongSound: HTMLAudioElement | null = null;
   export let mode = "";
   onMount(() => {
     highScore = Number(localStorage.getItem(mode)) ?? 0;
+    correctSound = new Audio("/correct.mp3");
+    wrongSound = new Audio("/wrong.mp3");
   });
 
   export let slicedContent = [""];
@@ -28,6 +35,7 @@
   }
 
   function handleGameOver() {
+    wrongSound?.play();
     borderColor[currentMovieIndex] = "red";
     showTryAgainButton = true;
   }
@@ -52,6 +60,7 @@
   }
   function updateCards(movieIndex: number) {
     score += 100;
+    correctSound?.play();
     if (highScore < score) {
       highScore = score;
       localStorage.setItem(mode, String(highScore));
@@ -106,6 +115,21 @@
       }
     }
   }
+  const handleMute = () => {
+    if (correctSound && wrongSound) {
+      hasAudio = false;
+      correctSound.muted = true;
+      wrongSound.muted = true;
+    }
+  };
+
+  const handleUnmute = () => {
+    if (correctSound && wrongSound) {
+      hasAudio = true;
+      correctSound.muted = false;
+      wrongSound.muted = false;
+    }
+  };
 
   const handleTryAgain = () => {
     score = 0;
@@ -144,6 +168,28 @@
         <div class="progress" bind:this={progressBar} />
       </div>
     {/if}
+    {#if hasAudio}
+      <div
+        class="sound"
+        on:click={handleMute}
+        on:keydown={(e) => ["Enter", "Space"].includes(e.code) && handleMute()}
+        role="button"
+        tabindex={0}
+      >
+        <SoundOn />
+      </div>
+    {:else}
+      <div
+        class="sound"
+        on:click={handleUnmute}
+        on:keydown={(e) =>
+          ["Enter", "Space"].includes(e.code) && handleUnmute()}
+        role="button"
+        tabindex={0}
+      >
+        <SoundOff />
+      </div>
+    {/if}
     <h4>High score: {highScore}</h4>
   </div>
 
@@ -175,6 +221,10 @@
       margin-block-start: 0;
       margin-block-end: 0;
       font-size: clamp(0.625rem, 0.5385rem + 0.3846vw, 1rem);
+    }
+    .sound {
+      display: flex;
+      cursor: pointer;
     }
   }
   .Cards {
