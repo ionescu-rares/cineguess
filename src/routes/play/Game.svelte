@@ -277,6 +277,7 @@
       gap: 16px;
       .TryAgainButton :global(.mdc-button) {
         width: 100px;
+        font-size: 11px;
       }
     }
   }
