@@ -269,7 +269,7 @@
   @media screen and (max-width: 475px) {
     .Card {
       width: 300px;
-      height: 300px;
+      height: 280px;
       .HLButtons {
         gap: 24px;
       }
