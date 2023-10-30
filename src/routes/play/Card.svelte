@@ -255,6 +255,15 @@
       .HLButtons {
         padding: 16px;
       }
+      .Ratings {
+        .imdb .RatingImage {
+          width: 80px;
+        }
+        .rotten .RatingImage,
+        .metacritic .RatingImage {
+          width: 20px;
+        }
+      }
     }
   }
   @media screen and (max-width: 475px) {
