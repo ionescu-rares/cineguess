@@ -160,7 +160,7 @@
     <h4>Score: {score}</h4>
 
     {#if showTryAgainButton}
-      <div in:fade={{ duration: 500 }}>
+      <div in:fade={{ duration: 500 }} class="TryAgainButton">
         <Button on:click={handleTryAgain} variant="raised">Try again</Button>
       </div>
     {:else}
@@ -272,6 +272,12 @@
   @media screen and (max-width: 475px) {
     .progress-bar {
       max-width: 100px;
+    }
+    .ScoreData {
+      gap: 16px;
+      .TryAgainButton :global(.mdc-button) {
+        width: 100px;
+      }
     }
   }
 </style>
