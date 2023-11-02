@@ -8,10 +8,14 @@
   <h4>Choose mode</h4>
   <div class="options">
     <div class="menuButtonWrapper">
-      <a href="/play/movies"> <Button variant="raised">movies</Button></a>
+      <a href="/play/movies" class="Link">
+        <Button variant="raised">movies</Button></a
+      >
     </div>
     <div class="menuButtonWrapper">
-      <a href="/play/series"><Button variant="raised">TV series</Button></a>
+      <a href="/play/series" class="Link"
+        ><Button variant="raised">TV series</Button></a
+      >
     </div>
   </div>
 </div>
@@ -34,6 +38,9 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    .Link {
+      text-decoration: none !important;
+    }
   }
   .menuButtonWrapper :global(.mdc-button) {
     width: 200px;
