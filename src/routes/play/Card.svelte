@@ -13,7 +13,7 @@
   export let borderColor = "black";
   export let movieIndex = -1;
 
-  let movieDetails: any;
+  let movieDetails: any = undefined;
   let posterImage: any;
   const dispatch = createEventDispatcher();
 
@@ -26,6 +26,9 @@
     );
     movieDetails = await response.json();
     dispatch("imdbScore", parseFloat(movieDetails.Ratings[0].Value));
+    if (movieDetails) {
+      dispatch("movieLoaded", true);
+    }
   }
 
   function handleHigherClick() {

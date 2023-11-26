@@ -19,6 +19,7 @@
   let highScore = 0;
   let correctSound: HTMLAudioElement | null = null;
   let wrongSound: HTMLAudioElement | null = null;
+  let hasMovieLoaded = false;
   export let mode = "";
   onMount(() => {
     highScore = Number(localStorage.getItem(mode)) ?? 0;
@@ -154,45 +155,48 @@
       on:imdbScore={(e) => (imdbScores[0] = e.detail)}
       on:higherClicked={(e) => checkHigher(e.detail)}
       on:lowerClicked={(e) => checkLower(e.detail)}
+      on:movieLoaded={(e) => (hasMovieLoaded = e.detail)}
     />
   {/if}
-  <div class="ScoreData" in:fade={{ duration: 500 }}>
-    <h4>Score: {score}</h4>
+  {#if hasMovieLoaded}
+    <div class="ScoreData" in:fade={{ duration: 500 }}>
+      <h4>Score: {score}</h4>
 
-    {#if showTryAgainButton}
-      <div in:fade={{ duration: 500 }} class="TryAgainButton">
-        <Button on:click={handleTryAgain} variant="raised">Try again</Button>
-      </div>
-    {:else}
-      <div class="progress-bar">
-        <div class="progress" bind:this={progressBar} />
-      </div>
-    {/if}
-    {#if hasAudio}
-      <div
-        class="sound"
-        on:click={handleMute}
-        on:keydown={(e) => ["Enter", "Space"].includes(e.code) && handleMute()}
-        role="button"
-        tabindex={0}
-      >
-        <SoundOn />
-      </div>
-    {:else}
-      <div
-        class="sound"
-        on:click={handleUnmute}
-        on:keydown={(e) =>
-          ["Enter", "Space"].includes(e.code) && handleUnmute()}
-        role="button"
-        tabindex={0}
-      >
-        <SoundOff />
-      </div>
-    {/if}
-    <h4>High score: {highScore}</h4>
-  </div>
-
+      {#if showTryAgainButton}
+        <div in:fade={{ duration: 500 }} class="TryAgainButton">
+          <Button on:click={handleTryAgain} variant="raised">Try again</Button>
+        </div>
+      {:else}
+        <div class="progress-bar">
+          <div class="progress" bind:this={progressBar} />
+        </div>
+      {/if}
+      {#if hasAudio}
+        <div
+          class="sound"
+          on:click={handleMute}
+          on:keydown={(e) =>
+            ["Enter", "Space"].includes(e.code) && handleMute()}
+          role="button"
+          tabindex={0}
+        >
+          <SoundOn />
+        </div>
+      {:else}
+        <div
+          class="sound"
+          on:click={handleUnmute}
+          on:keydown={(e) =>
+            ["Enter", "Space"].includes(e.code) && handleUnmute()}
+          role="button"
+          tabindex={0}
+        >
+          <SoundOff />
+        </div>
+      {/if}
+      <h4>High score: {highScore}</h4>
+    </div>
+  {/if}
   {#if currentMovies[1]}
     <Card
       movieIndex={1}
