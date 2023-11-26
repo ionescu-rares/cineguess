@@ -146,7 +146,7 @@
 </script>
 
 <div class="Cards">
-  {#if currentMovies[0]}
+  {#if currentMovies.length === 2}
     <Card
       movieIndex={0}
       movieTitle={currentMovies[0]}
@@ -155,49 +155,47 @@
       on:imdbScore={(e) => (imdbScores[0] = e.detail)}
       on:higherClicked={(e) => checkHigher(e.detail)}
       on:lowerClicked={(e) => checkLower(e.detail)}
-      on:movieLoaded={(e) => (hasMovieLoaded = e.detail)}
     />
-  {/if}
-  {#if hasMovieLoaded}
-    <div class="ScoreData" in:fade={{ duration: 500 }}>
-      <h4>Score: {score}</h4>
+    {#if hasMovieLoaded}
+      <div class="ScoreData" in:fade={{ duration: 500 }}>
+        <h4>Score: {score}</h4>
 
-      {#if showTryAgainButton}
-        <div in:fade={{ duration: 500 }} class="TryAgainButton">
-          <Button on:click={handleTryAgain} variant="raised">Try again</Button>
-        </div>
-      {:else}
-        <div class="progress-bar">
-          <div class="progress" bind:this={progressBar} />
-        </div>
-      {/if}
-      {#if hasAudio}
-        <div
-          class="sound"
-          on:click={handleMute}
-          on:keydown={(e) =>
-            ["Enter", "Space"].includes(e.code) && handleMute()}
-          role="button"
-          tabindex={0}
-        >
-          <SoundOn />
-        </div>
-      {:else}
-        <div
-          class="sound"
-          on:click={handleUnmute}
-          on:keydown={(e) =>
-            ["Enter", "Space"].includes(e.code) && handleUnmute()}
-          role="button"
-          tabindex={0}
-        >
-          <SoundOff />
-        </div>
-      {/if}
-      <h4>High score: {highScore}</h4>
-    </div>
-  {/if}
-  {#if currentMovies[1]}
+        {#if showTryAgainButton}
+          <div in:fade={{ duration: 500 }} class="TryAgainButton">
+            <Button on:click={handleTryAgain} variant="raised">Try again</Button
+            >
+          </div>
+        {:else}
+          <div class="progress-bar">
+            <div class="progress" bind:this={progressBar} />
+          </div>
+        {/if}
+        {#if hasAudio}
+          <div
+            class="sound"
+            on:click={handleMute}
+            on:keydown={(e) =>
+              ["Enter", "Space"].includes(e.code) && handleMute()}
+            role="button"
+            tabindex={0}
+          >
+            <SoundOn />
+          </div>
+        {:else}
+          <div
+            class="sound"
+            on:click={handleUnmute}
+            on:keydown={(e) =>
+              ["Enter", "Space"].includes(e.code) && handleUnmute()}
+            role="button"
+            tabindex={0}
+          >
+            <SoundOff />
+          </div>
+        {/if}
+        <h4>High score: {highScore}</h4>
+      </div>
+    {/if}
     <Card
       movieIndex={1}
       movieTitle={currentMovies[1]}
@@ -206,6 +204,7 @@
       on:imdbScore={(e) => (imdbScores[1] = e.detail)}
       on:higherClicked={(e) => checkHigher(e.detail)}
       on:lowerClicked={(e) => checkLower(e.detail)}
+      on:movieLoaded={(e) => (hasMovieLoaded = e.detail)}
     />
   {/if}
 </div>
